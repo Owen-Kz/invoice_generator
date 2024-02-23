@@ -220,5 +220,5 @@ SigneeSignattureContainer.setAttribute("src", signature)
 
 console.log(CompanyDetails[0])
 }else{
-    window.location.href = "../";
+    window.location.href = "../home/";
 }
