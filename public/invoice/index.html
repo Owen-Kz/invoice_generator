@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice | Powered By Weperch</title>
+    <link rel="stylesheet" href="../css/invoice.css">
+    <link rel="stylesheet" href="../css/modal.css">
+</head>
+<body>
+
+    <container class="body">
+    <header>
+        <div class="company_logo">
+            <img src="../images/Weperch New Logo 1.png" alt="companyLogo">
+           <div class="logo_right">
+            <div class="name">Comppany Name</div>
+            <div class="reg_number">CAC1840814</div>
+           </div> 
+        </div>
+
+        <div>
+            <h3>INVOICE</h3>
+        </div>
+    </header>
+
+    <main>
+
+    <div class="sub_header">
+        <div class="company_contact">
+            <div class="address">
+                3, Tex- Olawale Street,
+                Off Cocnut B/stop
+                Olodi-Apapa Lagos
+            </div>
+            <div class="phonenumber">
+                08139023920
+            </div>
+            <div class="email">info@weperch.com</div>
+            <div class="website">www.weperch.com</div>
+        </div>
+
+        <div class="date_container">
+            <ul>
+                <li>
+                    Date:  <div class="box" id="CurrentDateContainer">01-01-1999</div>
+                </li>
+                <li>
+                    Invoice Number: <div class="box">000222/11/23</div>
+                </li>
+                <li>Due Date: <div class="box" id="DueDateContainer">12-12-1999</div></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Bill To  -->
+    <div class="bill_to">
+        <div class="bill_to_header">
+            Bill To
+        </div>
+        <div class="bill_to_body">
+            <ul>
+                <li>John Doe</li>
+                <li>RecipientCompany Name</li>
+                <li>recipient@email.com</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ENd Bill To  -->
+<div class="addMore">
+    <button class="addItemButton" id="addRecipient">Recipient</button>
+    <button class="addItemButton" id="addNewItem">Add Item</button>
+    <button class="addItemButton" onclick="print()">Download</button>
+    <button class="addItemButton" id="ClearAllItemsButton">Clear All</button>
+</div>
+
+
+    <div class="table">
+        <div class="thead">
+                <div class="th first_column">Description</div>
+                <div class="th second_column">QTY</div>
+                <div class="th third_column">Rate</div>
+                <div class="th fourth_column">Amount </div>
+                <div class="th fifth_column"></div>
+            
+        </div>
+<!-- Table body Start  -->
+        <div class="tbody" id="tbody">
+
+           
+        </div>
+    </div>
+<!-- End Table body  -->
+
+
+    <div class="footer">
+        <div class="footer-left">
+            <div class="left-header">
+                <u>Payment Details</u>
+            </div>
+            <ul>
+                <li>Account No: <span>2193318443</span></li>
+                <li>Account Name: <span>Benson Michael Owen</span></li>
+                <li>Bank Name: <span>UBA</span></li>
+
+            </ul>
+        </div>
+
+        <div class="footer-right">
+            <ul>
+                <li>Subtotal: <span id="subTotal">N </span></li>
+                <li>Discounr: <span id="DiscountsContainer">N </span></li>
+                <li>Total: <span id="GrossTotalContainer"> N </span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="amount_in_words">
+        <div class="top">
+            Amount In Words: <div class="line_container"></div>
+        </div>
+        <div class="bottom">
+            <div class="line_container"></div>
+        </div>
+    </div>
+
+    <div class="signatory">
+        <div class="name_and_sign">
+            <div class="signature">
+                <img src="../images/owen sign88.png" alt="signature">
+            </div>
+            <div class="name_container">Thomas H. Shelby</div>
+        </div>
+        <div class="company_name_sign">
+            For <span>Company Name</span>
+        </div>
+    </div>
+
+
+    <br><br>
+<footer>
+    <center>   
+    <small>Powered by Weperch Technologies LLC</small>
+</center>
+</footer>
+    </main>
+
+
+
+</container>
+<div class="modal hide">
+    <div class="modal-body">
+        <div class="modal-header">
+            <div class="modal-title">
+                <b>Add New item</b>
+            </div>
+
+            <div class="close-button">
+                X
+            </div>
+        </div>
+
+        <form onsubmit="return false"  id="newDataForm">
+            <div class="form-control-container">
+                <label for="description"> Item Description</label>
+                <!-- <textarea class="form-control" id="description" cols="30" rows="10"></textarea> -->
+                <input type="text" class="form-control" id="description" >
+            </div>
+   
+            <div class="form-control-container">
+            <label for="quantity">Item quantity</label>
+            <input type="number" class="form-control" id="quantity" >
+            </div>
+
+            <div class="form-control-container">
+            <label for="rate">Rate of Item Sold</label>
+            <input type="number" class="form-control" id="rate" >
+            </div>
+
+            <div class="form-control-container">
+                <label for="rate">Amount</label>
+                <input type="number" class="form-control" id="amount" readonly value="0">
+                </div>
+    
+
+            <div class="form-control-container">
+                <label class="label">
+                    Discount?
+                </label>
+                <span for="discount">Yes</span>
+                <input type="radio" name="discount" id="discountYes">
+
+                <span for="discount">No</span>
+                <input type="radio" name="discount" id="discountNo">
+            </div>
+        
+            <div id="DiscountContainerBody">
+        
+            </div>
+           
+            
+        <div class="modal-footer">
+            <div class="buttons-container">
+                <button class="addItemButton">Done</button>
+            </div>
+        </div>
+        </form>
+
+    </div>
+</div>
+
+<script src="../js/handlingNewData.js" type="module"></script>
+
+<script src="../js/modalHanfler.js"></script>
+
+</body>
+</html>
