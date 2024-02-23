@@ -38,10 +38,10 @@ function CreateDetails(){
         if(getCompaneDetails){
             DeleteCookie("companyDetails")
         SetCookies("companyDetails", JSON.stringify(NewCompanyData), daysToKeep)
-        window.location.hrerf = "../invoice"
+        window.location.href = "../invoice"
         }else{
             SetCookies("companyDetails", JSON.stringify(NewCompanyData), daysToKeep)
-            window.location.hrerf = "../invoice"
+            window.location.href = "../invoice"
         }
       
     })
