@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice | Powered By Weperch</title>
+    <title>Invoice | Powered By Weperch Technologies</title>
+    <link rel="shortcut icon" href="../images/Weperch New Logo 1.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/invoice.css">
     <link rel="stylesheet" href="../css/modal.css">
 </head>
@@ -12,10 +13,10 @@
     <container class="body">
     <header>
         <div class="company_logo">
-            <img src="../images/Weperch New Logo 1.png" alt="companyLogo">
+            <img id="company_logo_container" alt="companyLogo">
            <div class="logo_right">
-            <div class="name">Comppany Name</div>
-            <div class="reg_number">CAC1840814</div>
+            <div id="company_name_container" class="name"></div>
+            <div id="reg_number" class="reg_number"></div>
            </div> 
         </div>
 
@@ -28,16 +29,14 @@
 
     <div class="sub_header">
         <div class="company_contact">
-            <div class="address">
-                3, Tex- Olawale Street,
-                Off Cocnut B/stop
-                Olodi-Apapa Lagos
+            <div class="address" id="address">
+        
             </div>
-            <div class="phonenumber">
-                08139023920
+            <div class="phonenumber" id="phonenumber">
+              
             </div>
-            <div class="email">info@weperch.com</div>
-            <div class="website">www.weperch.com</div>
+            <div class="email" id="email"></div>
+            <div class="website" id="website"></div>
         </div>
 
         <div class="date_container">
@@ -100,9 +99,9 @@
                 <u>Payment Details</u>
             </div>
             <ul>
-                <li>Account No: <span>2193318443</span></li>
-                <li>Account Name: <span>Benson Michael Owen</span></li>
-                <li>Bank Name: <span>UBA</span></li>
+                <li>Account No: <span id="bank_account_container">55</span></li>
+                <li>Account Name: <span id="bank_account_name_container"></span></li>
+                <li>Bank Name: <span id="bank_name_container"></span></li>
 
             </ul>
         </div>
@@ -128,12 +127,12 @@
     <div class="signatory">
         <div class="name_and_sign">
             <div class="signature">
-                <img src="../images/owen sign88.png" alt="signature">
+                <img id="signee_signature_container" alt="signature">
             </div>
-            <div class="name_container">Thomas H. Shelby</div>
+            <div id="signee_name_container" class="name_container"></div>
         </div>
         <div class="company_name_sign">
-            For <span>Company Name</span>
+            For <span id="company_name"></span>
         </div>
     </div>
 
@@ -205,6 +204,8 @@
                 <button class="addItemButton">Done</button>
             </div>
         </div>
+
+    
         </form>
 
     </div>

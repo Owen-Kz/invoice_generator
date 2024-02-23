@@ -1,5 +1,6 @@
 import { CAlculateDiscounts, CalculateGrossTotal, CallculateSubtotal } from "./calculateForTotal.js"
 import { CurrentDate, DueDate } from "./currentDate.js"
+import { GetCompanyDetails } from "./getCompanyDetails.js"
 import { DeleteCookie, GetCookie, SetCookies, daysToKeep } from "./setCookie.js"
 
 
@@ -160,3 +161,64 @@ DiscountsContainer.innerHTML += CAlculateDiscounts(SavedItems)
 
 const GrossTotalContainer = document.getElementById("GrossTotalContainer")
 GrossTotalContainer.innerHTML += CalculateGrossTotal(SavedItems)
+
+
+
+// Get Company Details 
+const CompanyDetails = JSON.parse(GetCompanyDetails())
+
+if(CompanyDetails.length > 0){
+const CompanyNameContainer = document.getElementById("company_name_container")
+const CompanyName = CompanyDetails[0].CompanyName
+CompanyNameContainer.innerHTML = CompanyName
+
+const CompanyLogoContainer = document.getElementById("company_logo_container")
+const CompanyLogo = CompanyDetails[0].CompanyLogo
+CompanyLogoContainer.setAttribute("src", CompanyLogo)
+
+const CompanyRegContainer = document.getElementById("reg_number")
+const CompanyReg = CompanyDetails[0].CompanyRegNumber
+CompanyRegContainer.innerHTML = CompanyReg
+
+const CompanyAddressContainer = document.getElementById("address")
+const CompanyAddress = CompanyDetails[0].CompanyAddress
+CompanyAddressContainer.innerHTML = CompanyAddress
+
+const CompanyPhonenumberContainer = document.getElementById("phonenumber")
+const CompanyPhonenumber = CompanyDetails[0].CompanyPhonenumber
+CompanyPhonenumberContainer.innerHTML = CompanyPhonenumber
+
+const CompanyEmailContainer = document.getElementById("email")
+const CompanyEmail = CompanyDetails[0].CompanyEmail
+CompanyEmailContainer.innerHTML = CompanyEmail
+
+const CompanyWebsiteContainer = document.getElementById("website")
+const CompanyWebsite = CompanyDetails[0].CompanyWesite
+CompanyWebsiteContainer.innerHTMl = CompanyWebsite
+
+
+const BankAccountContainer = document.getElementById("bank_account_container")
+const BankAccount = CompanyDetails[0].BankAccountNumber
+BankAccountContainer.innerHTML = BankAccount
+
+const BankNameContainer = document.getElementById("bank_name_container")
+const BankName = CompanyDetails[0].BankName
+BankNameContainer.innerHTML = BankName
+
+const BankACcountNameContainer = document.getElementById("bank_account_name_container")
+const BankAccountName = CompanyDetails[0].AccountName
+BankACcountNameContainer.innerHTML = BankAccountName
+
+const SigneeNameContainer = document.getElementById("signee_name_container")
+const SigneeName = CompanyDetails[0].AccountSigneeFullname
+SigneeNameContainer.innerHTML = SigneeName
+
+const SigneeSignattureContainer = document.getElementById("signee_signature_container")
+const signature = CompanyDetails[0].SigneeSignature
+SigneeSignattureContainer.setAttribute("src", signature)
+
+
+console.log(CompanyDetails[0])
+}else{
+    window.location.href = "../";
+}
