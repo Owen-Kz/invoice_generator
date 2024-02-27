@@ -399,5 +399,10 @@ header h3{
     }
     .modal-body{
         width: 100%;
+        border-radius: 0px;
     }
+    label{
+        font-size: 10px;
+    }
+
 }
