@@ -1,5 +1,5 @@
 const AccountForm = document.getElementById("AccountForm")
-import { DeleteCookie, GetCookie, SetCookies, daysToKeep } from "../setCookie.js"
+import { DeleteCookie, GetCookie, SetCookies, daysToKeep } from "./setCookie.js"
 
 let CompanyDetails 
 

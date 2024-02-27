@@ -1,5 +1,5 @@
 import { CAlculateDiscounts, CalculateGrossTotal, CallculateSubtotal } from "./calculateForTotal.js"
-import { CurrentDate, DueDate } from "./currentDate.js"
+import { CurrentDate, DueDate, InvoiceNumber } from "./currentDate.js"
 import { GetCompanyDetails } from "./getCompanyDetails.js"
 import { DeleteCookie, GetCookie, SetCookies, daysToKeep } from "./setCookie.js"
 
@@ -145,22 +145,24 @@ function ClearAllItems(){
 // DAte 
 const CurrentDateContainer = document.getElementById("CurrentDateContainer")
 const DueDateCOntainer = document.getElementById("DueDateContainer")
+const InvoiceNumberContainer = document.getElementById("InvoiceNumberContainer")
 
 CurrentDateContainer.innerHTML = CurrentDate 
 DueDateCOntainer.innerHTML = DueDate
+InvoiceNumberContainer.innerHTML = InvoiceNumber
 
 
 
 // TOTAL 
 const SubTotal = document.getElementById("subTotal");
-SubTotal.innerHTML += CallculateSubtotal(SavedItems)
+SubTotal.innerHTML += `${CallculateSubtotal(SavedItems)}.00`
 
 
 const DiscountsContainer = document.getElementById("DiscountsContainer")
-DiscountsContainer.innerHTML += CAlculateDiscounts(SavedItems)
+DiscountsContainer.innerHTML += `${CAlculateDiscounts(SavedItems)}.00`
 
 const GrossTotalContainer = document.getElementById("GrossTotalContainer")
-GrossTotalContainer.innerHTML += CalculateGrossTotal(SavedItems)
+GrossTotalContainer.innerHTML += `${CalculateGrossTotal(SavedItems)}.00`
 
 
 
@@ -169,8 +171,10 @@ const CompanyDetails = JSON.parse(GetCompanyDetails())
 
 if(CompanyDetails.length > 0){
 const CompanyNameContainer = document.getElementById("company_name_container")
+const CompanyNameContainerSign = document.getElementById("company_name_container_sign")
 const CompanyName = CompanyDetails[0].CompanyName
 CompanyNameContainer.innerHTML = CompanyName
+CompanyNameContainerSign.innerHTML = CompanyName
 
 const CompanyLogoContainer = document.getElementById("company_logo_container")
 const CompanyLogo = CompanyDetails[0].CompanyLogo
@@ -194,7 +198,7 @@ CompanyEmailContainer.innerHTML = CompanyEmail
 
 const CompanyWebsiteContainer = document.getElementById("website")
 const CompanyWebsite = CompanyDetails[0].CompanyWesite
-CompanyWebsiteContainer.innerHTMl = CompanyWebsite
+CompanyWebsiteContainer.innerHTML = CompanyWebsite
 
 
 const BankAccountContainer = document.getElementById("bank_account_container")
@@ -218,7 +222,6 @@ const signature = CompanyDetails[0].SigneeSignature
 SigneeSignattureContainer.setAttribute("src", signature)
 
 
-console.log(CompanyDetails[0])
 }else{
-    window.location.href = "../home/";
+    window.location.href = "../start/";
 }

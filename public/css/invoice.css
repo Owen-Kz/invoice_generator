@@ -11,12 +11,19 @@
 body{
     display: flex;
     justify-content: center;
+    /* font-family: 'Gillroy'; */
+    font-family: gilroy;
+    /* src: url('./gilroy/Gilroy-Regular.ttf'); */
+}
+@font-face {
+    font-family: gilroy;
+    src: url('./gilroy/Gilroy-Medium.ttf');
 }
 .body{
     background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
-    padding:20px;
+    padding:15px;
     width: 50%;
     margin: auto;
     box-shadow: -9px 13px 52px -23px rgba(0,0,0,0.70);
@@ -38,7 +45,7 @@ header h3{
     flex-direction: row;
     align-items: center;
     /* justify-content: space-between; */
-    width: 50%;
+    width: 60%;
 }
 
 .company_logo img{
@@ -53,6 +60,7 @@ header h3{
 .company_logo .name{
     font-size: 30px;
     font-weight: bold;
+    /* width: 60%; */
 }
 
 .company_logo .reg_number{
@@ -68,7 +76,7 @@ header h3{
 }
 
 .sub_header .company_contact{
-    width:250px;
+    width:200px;
 }
 
 .sub_header .address{
@@ -241,19 +249,23 @@ header h3{
     list-style-type: none;
     font-weight: bold;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .footer-right{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    width: 30%;
+    width: 40%;
     font-size: 18px;
 }
 .footer-right ul{
     list-style-type: none;
     padding: 8px;
+}
+.footer-right ul li #GrossTotalContainer{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
 .footer-right li{
     display: flex;
@@ -314,7 +326,7 @@ header h3{
 .name_and_sign {
     display: flex;
     align-items: flex-end;
-    width:30%;
+    width:250px;
     border-bottom:2px solid black
 }
 .signature img{
@@ -322,7 +334,7 @@ header h3{
     position: sticky;
 }
 .company_name_sign {
-    width: 30%;
+    width: 250px;
     display: flex;
     /* align-items: center; */
     flex-direction: row;
@@ -368,12 +380,13 @@ header h3{
     .addMore{
         display: none;
     }
-    .td:nth-child(5){
+    .tbody .td:nth-child(5){
         display: none;
     }
     .th:nth-child(5){
         display:none;
     }
+
 }
 
 @media screen and (max-width:720px), (max-width:480px), (max-width:360px), (max-width:1080px) {

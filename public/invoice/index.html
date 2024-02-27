@@ -32,9 +32,7 @@
             <div class="address" id="address">
         
             </div>
-            <div class="phonenumber" id="phonenumber">
-              
-            </div>
+            <div class="phonenumber" id="phonenumber"></div>
             <div class="email" id="email"></div>
             <div class="website" id="website"></div>
         </div>
@@ -45,7 +43,7 @@
                     Date:  <div class="box" id="CurrentDateContainer">01-01-1999</div>
                 </li>
                 <li>
-                    Invoice Number: <div class="box">000222/11/23</div>
+                    Invoice Number: <div class="box" id="InvoiceNumberContainer">000222/02/24</div>
                 </li>
                 <li>Due Date: <div class="box" id="DueDateContainer">12-12-1999</div></li>
             </ul>
@@ -59,9 +57,9 @@
         </div>
         <div class="bill_to_body">
             <ul>
-                <li>John Doe</li>
-                <li>RecipientCompany Name</li>
-                <li>recipient@email.com</li>
+                <li>Lizzy Edward</li>
+                <li>African Science Frontiers initiatives</li>
+                <li>lizzy.edwardking@gmail.com</li>
             </ul>
         </div>
     </div>
@@ -81,7 +79,7 @@
                 <div class="th second_column">QTY</div>
                 <div class="th third_column">Rate</div>
                 <div class="th fourth_column">Amount </div>
-                <div class="th fifth_column"></div>
+                <div class="th fifth_column">.</div>
             
         </div>
 <!-- Table body Start  -->
@@ -109,7 +107,7 @@
         <div class="footer-right">
             <ul>
                 <li>Subtotal: <span id="subTotal">N </span></li>
-                <li>Discounr: <span id="DiscountsContainer">N </span></li>
+                <li>Discount: <span id="DiscountsContainer">N </span></li>
                 <li>Total: <span id="GrossTotalContainer"> N </span></li>
             </ul>
         </div>
@@ -132,7 +130,7 @@
             <div id="signee_name_container" class="name_container"></div>
         </div>
         <div class="company_name_sign">
-            For <span id="company_name"></span>
+            For <span id="company_name_container_sign"></span>
         </div>
     </div>
 

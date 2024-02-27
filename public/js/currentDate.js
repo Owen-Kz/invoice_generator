@@ -7,6 +7,7 @@ function getCurrentDate() {
     var month = currentDate.getMonth() + 1; // Months are zero-based, so we add 1
     var year = currentDate.getFullYear();
 
+
     // Format the date as DD-MM-YYYY
     var formattedDate = `${day.toString().padStart(2, '0')}-${month.toString().padStart(2, '0')}-${year}`;
 
@@ -30,6 +31,7 @@ function getCurrentDatePlus7Days() {
     var month = futureDate.getMonth() + 1; // Months are zero-based, so we add 1
     var year = futureDate.getFullYear();
 
+
     // Format the future date as DD-MM-YYYY
     var formattedDate = `${day.toString().padStart(2, '0')}-${month.toString().padStart(2, '0')}-${year}`;
 
@@ -40,11 +42,30 @@ function getCurrentDatePlus7Days() {
 var futureDate = getCurrentDatePlus7Days();
 // console.log(futureDate); // Output will be the current date plus 7 days in the format DD-MM-YYYY
 
+function getInvoice() {
+    // Get the current date
+    var currentDate = new Date();
 
+    // Get the day, month, and year components
+    var day = currentDate.getDate();
+    var month = currentDate.getMonth() + 1; // Months are zero-based, so we add 1
+    var year = currentDate.getFullYear();
+    var In = currentDate.getFullYear().toString()
+    var NewTimeStamp = new Date().toLocaleTimeString()
+    var ConTime = NewTimeStamp[0] + NewTimeStamp[2] + NewTimeStamp[3] + NewTimeStamp[5] + NewTimeStamp[6]
+    var InvoiceNumberPrefix = day + 10 + new Number(ConTime)
+
+    // Format the date as DD-MM-YYYY
+    var InvoiceNumberGen = `${InvoiceNumberPrefix.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${In[2]}${In[3]}`;
+
+    return InvoiceNumberGen;
+}
+const InvoiceNumber = getInvoice()
 
 const DueDate = getCurrentDatePlus7Days()
 export {
     CurrentDate,
-    DueDate
+    DueDate,
+    InvoiceNumber
 }
 
