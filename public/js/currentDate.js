@@ -53,10 +53,11 @@ function getInvoice() {
     var In = currentDate.getFullYear().toString()
     var NewTimeStamp = new Date().toLocaleTimeString()
     var ConTime = NewTimeStamp[0] + NewTimeStamp[2] + NewTimeStamp[3] + NewTimeStamp[5] + NewTimeStamp[6]
-    var InvoiceNumberPrefix = day + 10 + new Number(ConTime)
+    var ConYear = In[2]+In[3]
+    var InvoiceNumberPrefix = day + 10 + new Number(ConTime) + new Number(ConYear)
 
     // Format the date as DD-MM-YYYY
-    var InvoiceNumberGen = `${InvoiceNumberPrefix.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${In[2]}${In[3]}`;
+    var InvoiceNumberGen = `00${InvoiceNumberPrefix.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${In[2]}${In[3]}`;
 
     return InvoiceNumberGen;
 }

@@ -1,6 +1,7 @@
 import { CAlculateDiscounts, CalculateGrossTotal, CallculateSubtotal } from "./calculateForTotal.js"
 import { CurrentDate, DueDate, InvoiceNumber } from "./currentDate.js"
 import { GetCompanyDetails } from "./getCompanyDetails.js"
+import { numberToWords } from "./numberToWords.js"
 import { DeleteCookie, GetCookie, SetCookies, daysToKeep } from "./setCookie.js"
 
 
@@ -89,7 +90,7 @@ if(SavedItems){
 for(let i=0; i<SavedItemsArray.length; i++){
     const index = SavedItemsArray[i]
     const Description = SavedItemsArray[i].description
-    const Rate = SavedItemsArray[i].rate
+    const Rate = new Number(SavedItemsArray[i].rate).toLocaleString()
     const QTY = SavedItemsArray[i].Quantity
     let QTTY
     if(QTY <= 1){
@@ -97,10 +98,10 @@ for(let i=0; i<SavedItemsArray.length; i++){
     }else{
         QTTY = QTY
     }
-    const Amount = SavedItemsArray[i].amount 
-    const Discount = SavedItemsArray[i].discount
+    const Amount = new Number(SavedItemsArray[i].amount).toLocaleString();
+    const Discount = new Number(SavedItemsArray[i].discount).toLocaleString();
 
-    tbody.innerHTML += `              <!-- Table Row Start   -->
+    tbody.innerHTML += `  <!-- Table Row Start   -->
     <div class="tRow">
      <div class="td first_column">${Description}</div>
      <div class="td second_column">${QTTY}</div>
@@ -155,16 +156,18 @@ InvoiceNumberContainer.innerHTML = InvoiceNumber
 
 // TOTAL 
 const SubTotal = document.getElementById("subTotal");
-SubTotal.innerHTML += `${CallculateSubtotal(SavedItems)}.00`
+SubTotal.innerHTML += `${CallculateSubtotal(SavedItems).toLocaleString()}.00`
 
 
 const DiscountsContainer = document.getElementById("DiscountsContainer")
-DiscountsContainer.innerHTML += `${CAlculateDiscounts(SavedItems)}.00`
+DiscountsContainer.innerHTML += `${CAlculateDiscounts(SavedItems).toLocaleString()}.00`
 
 const GrossTotalContainer = document.getElementById("GrossTotalContainer")
-GrossTotalContainer.innerHTML += `${CalculateGrossTotal(SavedItems)}.00`
+GrossTotalContainer.innerHTML += `${CalculateGrossTotal(SavedItems).toLocaleString()}.00`
 
-
+const AmmountInWordsContainer = document.getElementById("amount_in_words_container")
+const AmountInWords = numberToWords(CalculateGrossTotal(SavedItems))
+AmmountInWordsContainer.innerHTML = `${AmountInWords.toLocaleString()} Naira Only`
 
 // Get Company Details 
 const CompanyDetails = JSON.parse(GetCompanyDetails())
@@ -225,3 +228,54 @@ SigneeSignattureContainer.setAttribute("src", signature)
 }else{
     window.location.href = "../start/";
 }
+
+// AddREcipient 
+const AddRecipientButton = document.getElementById('addRecipient')
+AddRecipientButton.addEventListener("click", function(){
+    const RecipientName = prompt("Enter Recipient Name")
+    const RecipientEmail = prompt('Enter Recipient Email')
+    const RecipientCompanyName  = prompt('Enter Recipient Company Name')
+
+    const Recipient = []
+
+    Recipient.push({
+        Name: RecipientName,
+        Email:RecipientEmail,
+        CompanyName: RecipientCompanyName
+    });
+
+    const REcipientCokie = GetCookie("recipient")
+    if(REcipientCokie){
+        DeleteCookie("recipient")
+        SetCookies("recipient", JSON.stringify(Recipient), daysToKeep)
+
+    }else{
+        SetCookies("recipient", JSON.stringify(Recipient), daysToKeep)
+    }
+})
+
+
+
+// REtriev REcipient Info 
+function RecipientInfo(){
+    let BillTo
+    const RecipientCookie = GetCookie("recipient")
+    if(RecipientCookie){
+        BillTo = RecipientCookie
+    }else{
+        BillTo = "[]"
+    }
+    return BillTo
+}
+
+
+const RecipientData = JSON.parse(RecipientInfo())
+const RecipientName = RecipientData[0].Name
+const RecipientEmail = RecipientData[0].Email
+const RecipientCompany = RecipientData[0].CompanyName
+const BillToContainer = document.getElementById("bill_to_container")
+
+BillToContainer.innerHTML =`
+        <li>${RecipientName}</li>
+        <li>${RecipientCompany}</li>
+        <li>${RecipientEmail}</li>`
