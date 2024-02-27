@@ -105,8 +105,8 @@ for(let i=0; i<SavedItemsArray.length; i++){
     <div class="tRow">
      <div class="td first_column">${Description}</div>
      <div class="td second_column">${QTTY}</div>
-     <div class="td third_column">N ${Rate}</div>
-     <div class="td fourth_column">N ${Amount}</div>
+     <div class="td third_column">&#8358; ${Rate}</div>
+     <div class="td fourth_column">&#8358; ${Amount}</div>
      <div class="td fifth_column closeItem" id="${i}">x</div>
  </div>
  <!-- End Table Row  -->`
