@@ -7,8 +7,21 @@ import { DeleteCookie, GetCookie, SetCookies, daysToKeep } from "./setCookie.js"
 
 let Data
 
+async function fetchItems(){
+    return fetch("/getsavedItems", {
+        method:"POST"
+    }).then(res =>res.json())
+    .then(data=>{
+        console.log(data)
+    if(data.success){
+       return  data.recentItems
+    }else{
+    return GetCookie("itemsList")
+    }
+    })
+}
+const SavedItems = await fetchItems()
 
-const SavedItems = GetCookie("itemsList")
 
 const SavedItemsArray = JSON.parse(SavedItems)
 
@@ -30,7 +43,7 @@ function PopFromArray(description) {
     const SavedItemsArrayNew = SavedItemsArray.filter(function(item) {
         return item.description !== description;
     });
-    console.log(SavedItemsArrayNew)
+    // console.log(SavedItemsArrayNew)
     // Save the updated array to cookies
     SetCookies("itemsList", JSON.stringify(SavedItemsArrayNew), daysToKeep);
 
@@ -49,15 +62,41 @@ let DISC
        DISC = 0
     }
     Data.push({
+        item_description: Description.value,
+        rate: Rate.value,
+        amount: Amount.value,
+        discount: DISC,
+        quantity: Quantity.value,
+        invoiceNumber:InvoiceNumberContainer.innerHTML,
+    })    
+    const newItemData = {
         description: Description.value,
         rate: Rate.value,
         amount: Amount.value,
         discount: DISC,
-        Quantity: Quantity.value
-    })    
+        Quantity: Quantity.value,
+        invoiceNumber:InvoiceNumberContainer.innerHTML,
+    }
+    fetch("/saveItem", {
+        method:"POST",
+        body:JSON.stringify(newItemData),
+        headers:{
+            "Content-type":"application/JSON"
+        }
+    }).then(res =>res.json())
+    .then(data =>{
+        
+        if(data.success){
+            
+    // SetCookies("itemsList", JSON.stringify(Data), daysToKeep)
+    // window.location.reload()
+    Saveinvoice()
 
-    SetCookies("itemsList", JSON.stringify(Data), daysToKeep)
-    window.location.reload()
+        }else{
+            alert(data.error)
+        }
+    })
+
 
 })
 
@@ -89,9 +128,9 @@ const tbody = document.querySelector(".tbody")
 if(SavedItems){
 for(let i=0; i<SavedItemsArray.length; i++){
     const index = SavedItemsArray[i]
-    const Description = SavedItemsArray[i].description
+    const Description = SavedItemsArray[i].item_description
     const Rate = new Number(SavedItemsArray[i].rate).toLocaleString()
-    const QTY = SavedItemsArray[i].Quantity
+    const QTY = SavedItemsArray[i].quantity
     let QTTY
     if(QTY <= 1){
         QTTY = "N/A"
@@ -121,8 +160,8 @@ if(closeItem.length >0){
     closeItem.forEach(element => {
         const ID = element.id
       element.addEventListener("click", function(){
-        PopFromArray(SavedItemsArray[ID].description)
-        console.log(SavedItemsArray[ID].description)
+        PopFromArray(SavedItemsArray[ID].item_description)
+        console.log(SavedItemsArray[ID].item_description)
       })
     });
 
@@ -170,67 +209,82 @@ const AmountInWords = numberToWords(CalculateGrossTotal(SavedItems))
 AmmountInWordsContainer.innerHTML = `${AmountInWords.toLocaleString()} Naira Only`
 
 // Get Company Details 
-const CompanyDetails = JSON.parse(GetCompanyDetails())
+const CompanyDetails = await GetCompanyDetails()
 
-if(CompanyDetails.length > 0){
+if(CompanyDetails){
 const CompanyNameContainer = document.getElementById("company_name_container")
 const CompanyNameContainerSign = document.getElementById("company_name_container_sign")
-const CompanyName = CompanyDetails[0].CompanyName
+const CompanyName = CompanyDetails.company_name
 CompanyNameContainer.innerHTML = CompanyName
 CompanyNameContainerSign.innerHTML = CompanyName
 
 const CompanyLogoContainer = document.getElementById("company_logo_container")
-const CompanyLogo = CompanyDetails[0].CompanyLogo
+const CompanyLogo = CompanyDetails.company_logo
 CompanyLogoContainer.setAttribute("src", CompanyLogo)
 
 const CompanyRegContainer = document.getElementById("reg_number")
-const CompanyReg = CompanyDetails[0].CompanyRegNumber
+const CompanyReg = CompanyDetails.reg_number
 CompanyRegContainer.innerHTML = CompanyReg
 
 const CompanyAddressContainer = document.getElementById("address")
-const CompanyAddress = CompanyDetails[0].CompanyAddress
+const CompanyAddress = CompanyDetails.company_address
 CompanyAddressContainer.innerHTML = CompanyAddress
 
 const CompanyPhonenumberContainer = document.getElementById("phonenumber")
-const CompanyPhonenumber = CompanyDetails[0].CompanyPhonenumber
+const CompanyPhonenumber = CompanyDetails.company_phone
 CompanyPhonenumberContainer.innerHTML = CompanyPhonenumber
 
 const CompanyEmailContainer = document.getElementById("email")
-const CompanyEmail = CompanyDetails[0].CompanyEmail
+const CompanyEmail = CompanyDetails.company_email
 CompanyEmailContainer.innerHTML = CompanyEmail
 
 const CompanyWebsiteContainer = document.getElementById("website")
-const CompanyWebsite = CompanyDetails[0].CompanyWesite
+const CompanyWebsite = CompanyDetails.company_website
 CompanyWebsiteContainer.innerHTML = CompanyWebsite
 
 
 const BankAccountContainer = document.getElementById("bank_account_container")
-const BankAccount = CompanyDetails[0].BankAccountNumber
+const BankAccount = CompanyDetails.account_number
 BankAccountContainer.innerHTML = BankAccount
 
 const BankNameContainer = document.getElementById("bank_name_container")
-const BankName = CompanyDetails[0].BankName
+const BankName = CompanyDetails.bank_name
 BankNameContainer.innerHTML = BankName
 
 const BankACcountNameContainer = document.getElementById("bank_account_name_container")
-const BankAccountName = CompanyDetails[0].AccountName
+const BankAccountName = CompanyDetails.account_name
 BankACcountNameContainer.innerHTML = BankAccountName
 
 const SigneeNameContainer = document.getElementById("signee_name_container")
-const SigneeName = CompanyDetails[0].AccountSigneeFullname
+const SigneeName = CompanyDetails.fullname
 SigneeNameContainer.innerHTML = SigneeName
 
 const SigneeSignattureContainer = document.getElementById("signee_signature_container")
-const signature = CompanyDetails[0].SigneeSignature
+const signature = CompanyDetails.signature
 SigneeSignattureContainer.setAttribute("src", signature)
 
 
 }else{
-    window.location.href = "../start/";
+    window.location.href = "/";
 }
 
 // AddREcipient 
-const AddRecipientButton = document.getElementById('addRecipient')
+// get exitsting REcipient 
+fetch("/exisitngReceipient", {
+    method:"POST",
+}).then(res=>res.json())
+.then(data=>{
+    if(data){
+       
+        const Recipient = data.reciepient
+      
+        const REcipientCokie = GetCookie("recipient")
+        if(Recipient.length > 0){
+            SetCookies("recipient", JSON.stringify(Recipient), daysToKeep)
+        }
+    }
+})
+const AddRecipientButton = document.getElementById('addRecipient') 
 AddRecipientButton.addEventListener("click", function(){
     const RecipientName = prompt("Enter Recipient Name")
     const RecipientEmail = prompt('Enter Recipient Email')
@@ -252,6 +306,8 @@ AddRecipientButton.addEventListener("click", function(){
     }else{
         SetCookies("recipient", JSON.stringify(Recipient), daysToKeep)
     }
+    // window.location.reload()
+    Saveinvoice()
 })
 
 
@@ -270,6 +326,8 @@ function RecipientInfo(){
 
 
 const RecipientData = JSON.parse(RecipientInfo())
+
+if(RecipientData.length > 0){
 const RecipientName = RecipientData[0].Name
 const RecipientEmail = RecipientData[0].Email
 const RecipientCompany = RecipientData[0].CompanyName
@@ -279,3 +337,40 @@ BillToContainer.innerHTML =`
         <li>${RecipientName}</li>
         <li>${RecipientCompany}</li>
         <li>${RecipientEmail}</li>`
+}
+
+
+const saveItemButton = document.getElementById("saveItemButton")
+
+saveItemButton.addEventListener("click", function(){
+    Saveinvoice()
+})
+function Saveinvoice(){
+    const invoiceData = {
+        receipientData: RecipientInfo() ? RecipientInfo() : [], 
+        itemsList: SavedItems ? SavedItems : "[]",
+        InvoiceNumber: InvoiceNumberContainer.innerHTML,
+        expiry_date: DueDate,
+    }
+    fetch("/saveInvoice", {
+        method:"POST",
+        body:JSON.stringify(invoiceData),
+        headers:{
+            "Content-type" : "application/JSON"
+        }
+    }).then(res =>res.json())
+    .then(data=>{
+        if(data.success){
+            alert(data.success)
+            window.location.reload()
+        }else{
+            alert(data.error)
+        }
+    })
+    
+}
+
+
+function SendInvoice(){
+
+}

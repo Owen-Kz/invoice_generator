@@ -1,0 +1,113 @@
+.modal{
+    flex-direction: column;
+    width:100%;
+    height: 100%;
+    display: none;
+    z-index: 1022233;
+    
+    /* max-width: 800px; */
+    background-color: rgba(0, 0, 0, 0.367);
+    /* backdrop-filter: blur(2px); */
+    position: fixed;justify-content: center;
+    transition: ease-in-out 200ms;
+}
+
+
+
+.modal-body{
+    background-color: white;
+    max-width: 500px;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-self: center;
+    /* overflow: scroll; */
+    flex-direction: column;
+    border-radius: 25px;
+    transition: ease-in-out 200ms;
+    padding: 10px;
+}
+
+.modal-header{
+    width:100%;
+    height:10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-header .close-button{
+    background-color: rgb(179, 179, 179);
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    justify-content: center;
+}
+
+.modal-body form{
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+}
+
+.modal form label, .discount_container{
+    margin-top: 10px;
+
+}
+.modal form .form-control-container{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.form-control-container label, .discount_container .label{
+    width:30%;
+    background-color: var(--primaryColor);
+    padding:8px;
+    color:white;
+    border-top-right-radius: 25px;
+}
+.modal-body form .form-control{
+    width: 70%;
+    border:none;
+    justify-self: flex-end;
+    outline: none;
+    border-bottom: 2px solid var(--primaryColor);
+    /* background-color: rgb(243, 243, 243); */
+    padding: 0px 10px 0px 10px;
+}
+
+.form-control:not(textarea){
+    height: 30px;
+}
+
+
+textarea{
+    resize: none;
+}
+.form-control::after, .form-control::before{
+    display: none;
+}
+
+.form-control-container span{
+    padding: 0px 5px 0px 5px;
+}
+
+.modal-footer{
+    display: flex;
+    padding: 8px;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.buttons-container{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}

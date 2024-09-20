@@ -1,0 +1,136 @@
+#formContainer {
+    display: flex;
+    max-height: 85%;
+    height: max-content;
+    width: 100%;
+    flex-direction: column;
+    max-width: 450px;
+    background-color: white;
+    margin: auto;
+    overflow-y: scroll;
+    align-self: center;
+    justify-self: center;
+    margin: auto;
+    box-shadow: var(--box-shadow);
+}
+.modal-content{
+    padding: 20px;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    width: 100%;
+    flex-direction: column;
+    max-width: 450px;
+}
+#formCOntainer ::-webkit-scrollbar{
+    display: none;
+    
+}
+.formHeader .headingTextTop{
+    font-size: 14px;
+    display: flex;
+    font-weight: bold;
+}
+.formHeader .headingTextBottom{
+    font-size: 12px;
+    font-weight: lighter;
+    display: flex;
+}
+
+.formHeader, .formFooter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: sticky;
+    height: max-content;
+    background-color: rgb(228, 228, 228);
+    width: 100%;
+}
+.formHeader{
+    padding: 20px 20px 10px 20px;
+    top: 0;
+}
+.formFooter {
+    padding: 20px 20px 20px 20px;
+    bottom: 0;
+}
+
+.formHeader .formImage{
+    display: flex;
+    height:40px;
+    width: 40px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    justify-self: center;
+    height: 80%;
+    padding: 30px;
+    /* overflow-y: scroll; */
+}
+.border-25{
+    border-radius: var(--border-radius-25);
+}
+
+
+
+.formControlContainer{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-top: 10px;
+}
+
+.formControlContainer label{
+    font-size: 12px;
+    padding-bottom:2px;
+}
+
+.formControl{
+    display: flex;
+    border:1px solid #333;
+    height: 40px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.formControlContainer a, .formControlContainer span{
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+#formContainer .buttonsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.submitButton {
+    display: flex;
+    width: 90%;
+}
+.submitButton button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: var(--primary-color);
+    width: 100%;
+    border-radius: var(--border-radius-25);
+    color: #ffffe7;
+    border: none;
+    outline: none;
+}
+
+.formFooter a{
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--default-text-color);
+}

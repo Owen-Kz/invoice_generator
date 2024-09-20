@@ -1,3 +1,5 @@
+import { GetCookie } from "./setCookie.js";
+
 function getCurrentDate() {
     // Get the current date
     var currentDate = new Date();
@@ -42,26 +44,16 @@ function getCurrentDatePlus7Days() {
 var futureDate = getCurrentDatePlus7Days();
 // console.log(futureDate); // Output will be the current date plus 7 days in the format DD-MM-YYYY
 
-function getInvoice() {
-    // Get the current date
-    var currentDate = new Date();
-
-    // Get the day, month, and year components
-    var day = currentDate.getDate();
-    var month = currentDate.getMonth() + 1; // Months are zero-based, so we add 1
-    var year = currentDate.getFullYear();
-    var In = currentDate.getFullYear().toString()
-    var NewTimeStamp = new Date().toLocaleTimeString()
-    var ConTime = NewTimeStamp[0] + NewTimeStamp[2] + NewTimeStamp[3] + NewTimeStamp[5] + NewTimeStamp[6]
-    var ConYear = In[2]+In[3]
-    var InvoiceNumberPrefix = day + 10 + new Number(ConTime) + new Number(ConYear)
-
-    // Format the date as DD-MM-YYYY
-    var InvoiceNumberGen = `00${InvoiceNumberPrefix.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${In[2]}${In[3]}`;
-
-    return InvoiceNumberGen;
+async function getInvoice() {
+  return  fetch("/generateInvoiceNumber", {
+        method:"POST"
+    }).then(res =>res.json())
+    .then(data=>{
+        console.log(data.invoiceNumber)
+        return data.invoiceNumber
+    })
 }
-const InvoiceNumber = getInvoice()
+const InvoiceNumber = await getInvoice()
 
 const DueDate = getCurrentDatePlus7Days()
 export {
