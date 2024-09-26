@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Red_Theme" data-layout="vertical">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicon icon-->
+  <link rel="shortcut icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+  <!-- Core Css -->
+  <link rel="stylesheet" href="/css/css/styles.css" />
+  <title>Weperch Invoice Generator</title>
+  <!-- <link rel="stylesheet" href="/css/landing.css"> -->
+   <link rel="stylesheet" href="/css/invoice.css">
+</head>
+
+<body class="link-sidebar">
+  <!-- Preloader -->
+  <div class="preloader">
+    <img src="/assets/favicon.png" alt="loader" class="lds-ripple img-fluid" />
+  </div>
+  <div id="main-wrapper">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar with-vertical">
+      <div><!-- ---------------------------------- -->
+        <!-- Start Vertical Layout Sidebar -->
+        <!-- ---------------------------------- -->
+        <!-- Sidebar scroll-->
+      <%- include("leftSideBar")  %>
+
+        <!-- End Sidebar scroll-->
+      </div>
+    </aside>
+    <!--  Sidebar End -->
+    <div class="page-wrapper">
+      <!--  Header Start -->
+      <%- include("header") %>
+
+      <!--  Header End -->
+
+      <aside class="left-sidebar with-horizontal asideShadow">
+  
+      </aside>
+
+
+     
+      <div class="body-wrapper">
+        <div class="container-fluid">
+          <div class="shadow-none position-relative overflow-hidden mb-4">
+            <div class="d-sm-flex d-block justify-content-between align-items-center">
+              <h5 class="mb-0 fw-semibold text-uppercase"> Invoice</h5>
+              <nav aria-label="breadcrumb" class="d-flex align-items-center">
+                <ol class="breadcrumb d-flex align-items-center">
+                  <li class="breadcrumb-item">
+                    <a class="text-decoration-none" href="/dashboard">Home
+                    </a>
+                  </li>
+                  <li class="breadcrumb-item text-primary" aria-current="page">
+                    Invoice
+                  </li>
+                </ol>
+
+              </nav>
+            </div>
+          </div>
+          <div class="card overflow-hidden invoice-application">
+            <div class="d-flex align-items-center justify-content-between gap-6 m-3 d-lg-none">
+              <button class="btn btn-primary d-flex" type="button" data-bs-toggle="offcanvas" data-bs-target="#chat-sidebar" aria-controls="chat-sidebar">
+                <i class="ti ti-menu-2 fs-5"></i>
+              </button>
+              <form class="position-relative w-100">
+                <input type="text" class="form-control search-chat py-2 ps-5" id="text-srh" placeholder="Search Contact">
+                <i class="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3"></i>
+              </form>
+            </div>
+            <div class="d-flex">
+              <div class="w-25 d-none d-lg-block border-end user-chat-box">
+                <div class="p-3 border-bottom">
+                  <form class="position-relative">
+                    <input type="search" class="form-control search-invoice ps-5" id="text-srh" placeholder="Search Invoice" />
+                    <i class="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3"></i>
+                  </form>
+                </div>
+                <div class="app-invoice">
+                  <ul class="overflow-auto invoice-users" id="invoiceList">
+                  
+
+              
+                  </ul>
+                </div>
+              </div>
+              <div class="w-75 w-xs-100 chat-container">
+                <div class="invoice-inner-part h-100">
+                  <div class="invoiceing-box">
+                    <div class="invoice-header d-flex align-items-center border-bottom p-3">
+                      <h4 class=" text-uppercase mb-0">Invoice</h4>
+                      <div class="ms-auto">
+                        <a href="/invoice">
+                        <button class="btn btn-primary invoice-number"> Create New Invoice
+                        </button>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="p-3" id="custom-invoice">
+                      <div class="invoice-123" id="printableArea">
+                        <container class="body">
+                          <h4>Click On An item to View</h4>
+                      
+                      
+                      </container>
+                  
+                      </div>
+                      <div class="clearfix"></div>
+                      <hr />
+                      <div class="text-end actionButtonsContainer">
+                      <a href="#" id="shareButton" data-bs-toggle="modal" data-bs-target="#exampleModal">  <button class="btn btn-primary btn-default ms-6" type="button" >
+                         Share
+                        </button>
+                        </a>
+                        <button class="btn btn-primary btn-default print-page ms-6" type="button">
+                          <span>
+                            <i class="ti ti-printer fs-5"></i>
+                            Print
+                          </span>
+                        </button>
+                      </div>
+        </div>
+      
+          
+         
+               
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="offcanvas offcanvas-start user-chat-box" tabindex="-1" id="chat-sidebar" aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+                    Invoice
+                  </h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="p-3 border-bottom">
+                  <form class="position-relative">
+                    <input type="search" class="form-control search-invoice ps-5" id="text-srh" placeholder="Search Invoice">
+                    <i class="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3"></i>
+                  </form>
+                </div>
+                <div class="app-invoice overflow-auto">
+                  <ul class="invoice-users" id="invoiceListMobile">
+            
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!----Footer--->
+        <!-- -------------------------------------------------------------- -->
+        <!-- footer -->
+        <!-- -------------------------------------------------------------- -->
+ <%- include("footer")  %>
+        <!-- -------------------------------------------------------------- -->
+        <!-- End footer -->
+        <!-- -------------------------------------------------------------- -->
+        <!----Footer End--->
+        <%- include("modaltemplate") %>
+      </div>
+      <script>
+  function handleColorTheme(e) {
+    document.documentElement.setAttribute("data-color-theme", e);
+  }
+</script>
+
+
+    </div>
+
+
+  </div>
+  <div class="dark-transparent sidebartoggler"></div>
+  <script src="https://bootstrapdemos.wrappixel.com/ample/dist/assets/js/vendor.min.js"></script>
+
+  <!-- Get invoice list  -->
+
+<script type="module" src="/js/invoiceList.js"></script>
+  <!-- end einvoiceList  -->
+  <!-- Import Js Files -->
+  <script src="https://bootstrapdemos.wrappixel.com/ample/dist/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/ample/dist/assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="/js/theme/app.init.js"></script>
+  <script src="/js/theme/theme.js"></script>
+  <script src="/js/theme/app.min.js"></script>
+  <script src="/js/theme/sidebarmenu.js"></script>
+  <script src="/js/theme/feather.min.js"></script>
+
+  <!-- solar icons -->
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/ample/dist/assets/libs/fullcalendar/index.global.min.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/ample/dist/assets/js/apps/invoice.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/ample/dist/assets/js/apps/jquery.PrintArea.js"></script>
+</body>
+
+</html>

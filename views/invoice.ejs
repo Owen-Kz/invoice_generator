@@ -1,219 +1,376 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Red_Theme" data-layout="vertical">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice | Powered By Weperch Technologies</title>
-    <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="/css/invoice.css">
-    <link rel="stylesheet" href="/css/modal-old.css">
+  <!-- Required meta tags -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  <!-- Favicon icon-->
+  <link rel="shortcut icon" type="image/png" href="/assets/favicon.png" />
+
+  <!-- Core Css -->
+  <link rel="stylesheet" href="/css/css/styles.css" />
+  <title>Invoice | Powered By Weperch Technologies</title>
+  <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="/css/invoice.css">
+  <link rel="stylesheet" href="/css/modal-old.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/form.css">
 </head>
-<body>
 
-    <container class="body">
-    <header>
-        <div class="company_logo">
-            <img id="company_logo_container" alt="companyLogo">
-           <div class="logo_right">
-            <div id="company_name_container" class="name"></div>
-            <div id="reg_number" class="reg_number"></div>
-           </div> 
-        </div>
+<body class="link-sidebar">
+  <!-- Preloader -->
+  <div class="preloader">
+    <img src="/assets/favicon.png" alt="loader" class="lds-ripple img-fluid" />
+  </div>
+  <div id="main-wrapper">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar with-vertical">
+      <div><!-- ---------------------------------- -->
+        <!-- Start Vertical Layout Sidebar -->
+        <!-- ---------------------------------- -->
+        <!-- Sidebar scroll-->
+      <%- include("leftSideBar")  %>
 
-        <div>
-            <h3>INVOICE</h3>
-        </div>
-    </header>
+        <!-- End Sidebar scroll-->
+      </div>
+    </aside>
+    <!--  Sidebar End -->
+    <div class="page-wrapper">
+      <!--  Header Start -->
+      <%- include("header") %>
 
-    <main>
+      <!--  Header End -->
 
-    <div class="sub_header">
-        <div class="company_contact">
-            <div class="address" id="address">
+      <aside class="left-sidebar with-horizontal asideShadow">
+  
+      </aside>
+
+
+     
+      <div class="body-wrapper">
+        <div class="container-fluid">
+          <div class="shadow-none position-relative overflow-hidden mb-4">
+            <div class="d-sm-flex d-block justify-content-between align-items-center">
+              <h5 class="mb-0 fw-semibold text-uppercase">New Invoice</h5>
+              <nav aria-label="breadcrumb" class="d-flex align-items-center">
+                <ol class="breadcrumb d-flex align-items-center">
+                  <li class="breadcrumb-item">
+                    <a class="text-decoration-none" href="/dashboard">Home
+                    </a>
+                  </li>
+                  <li class="breadcrumb-item text-primary" aria-current="page">
+                    New Invoice
+                  </li>
+                </ol>
+
+              </nav>
+            </div>
+          </div>
+          <div class="card overflow-hidden invoice-application">
+            <div class="d-flex align-items-center justify-content-between gap-6 m-3 d-lg-none">
+             
         
             </div>
-            <div class="phonenumber" id="phonenumber"></div>
-            <div class="email" id="email"></div>
-            <div class="website" id="website"></div>
-        </div>
+            <div class="d-flex ">
+     
+              <div class="w-100 w-xs-100 chat-container">
+                <div class="invoice-inner-part h-100">
+                  <div class="invoiceing-box">
+                    <div class="invoice-header d-flex align-items-center border-bottom p-3">
+                      <h4 class=" text-uppercase mb-0">Invoice</h4>
+                      <div class="ms-auto">
+                        <h4 class="invoice-number"></h4>
+                      </div>
+                    </div>
+                    <div class="p-3" id="custom-invoice">
+                      <div class="invoice-123" id="printableArea">
+      
+    <container class="body" >
+      <header>
+          <div class="company_logo">
+              <img id="company_logo_container" alt="companyLogo">
+             <div class="logo_right">
+              <div id="company_name_container" class="name"></div>
+              <div id="reg_number" class="reg_number"></div>
+             </div> 
+          </div>
+  
+          <div>
+              <h3>INVOICE</h3>
+          </div>
+      </header>
+  
+      <main>
+  
+      <div class="sub_header">
+          <div class="company_contact">
+              <div class="address" id="address">
+          
+              </div>
+              <div class="phonenumber" id="phonenumber"></div>
+              <div class="email" id="email"></div>
+              <div class="website" id="website"></div>
+          </div>
+  
+          <div class="date_container">
+              <ul>
+                  <li>
+                      Date:  <div class="box" id="CurrentDateContainer">01-01-1999</div>
+                  </li>
+                  <li>
+                      Invoice Number: <div class="box" id="InvoiceNumberContainer">000222/02/24</div>
+                  </li>
+                  <li>Due Date: <div class="box" id="DueDateContainer">12-12-1999</div></li>
+              </ul>
+          </div>
+      </div>
+  
+      <!-- Bill To  -->
+      <div class="bill_to">
+          <div class="bill_to_header">
+              Bill To
+          </div>
+          <div class="bill_to_body">
+              <ul id="bill_to_container">
+                  
+              </ul>
+          </div>
+      </div>
+  
+      <!-- ENd Bill To  -->
+  <div class="addMore">
+      <button class="addItemButton" id="addRecipient">Recipient</button>
+      <button class="addItemButton" id="addNewItem">Add Item</button>
+      <button class="addItemButton" onclick="print()">Download</button>
+      <button class="addItemButton" id="ClearAllItemsButton">Clear All</button>
+      <button class="addItemButton" id="saveItemButton">Save Invoice</button>
+  </div>
+  
+  
+      <div class="table">
+          <div class="thead">
+                  <div class="th first_column">Description</div>
+                  <div class="th second_column">QTY</div>
+                  <div class="th third_column">Rate</div>
+                  <div class="th fourth_column">Amount </div>
+                  <div class="th fifth_column">.</div>
+              
+          </div>
+  <!-- Table body Start  -->
+          <div class="tbody" id="tbody">
+  
+             
+          </div>
+      </div>
+  <!-- End Table body  -->
+  
+  
+      <div class="footer">
+          <div class="footer-left">
+              <div class="left-header">
+                  <u>Payment Details</u>
+              </div>
+              <ul>
+                  <li>Account No: <span id="bank_account_container">55</span></li>
+                  <li>Account Name: <span id="bank_account_name_container"></span></li>
+                  <li>Bank Name: <span id="bank_name_container"></span></li>
+  
+              </ul>
+          </div>
+  
+          <div class="footer-right">
+              <ul>
+                  <li>Subtotal: <span id="subTotal">&#8358; </span></li>
+                  <li>Discount: <span id="DiscountsContainer">&#8358; </span></li>
+                  <li>Total: <span id="GrossTotalContainer">&#8358; </span></li>
+              </ul>
+          </div>
+      </div>
+  
+      <div class="amount_in_words">
+          <div class="top">
+              <span class="amountWords">
+                  Amount In Words:
+              </span>
+              <div class="line_container" id="amount_in_words_container"></div>
+          </div>
+          <div class="bottom">
+              <div class="line_container"></div>
+          </div>
+      </div>
+  
+      <div class="signatory">
+          <div class="name_and_sign">
+              <div class="signature">
+                  <img id="signee_signature_container" alt="signature">
+              </div>
+              <div id="signee_name_container" class="name_container"></div>
+          </div>
+          <div class="company_name_sign">
+              For <span id="company_name_container_sign"></span>
+          </div>
+      </div>
+  
+  
+      <br><br>
+  <footer>
+      <center>   
+      <small>Powered by Weperch Technologies LLC</small>
+  </center>
+  </footer>
+      </main>
+  
+  
+  
+  </container>
+  <div class="modal hide">
+      <div class="modal-body" >
+          <div class="modal-header">
+              <div class="modal-title">
+                  <b>Add New item</b>
+              </div>
+  
+              <div class="close-button">
+                  X
+              </div>
+          </div>
+  
+          <form onsubmit="return false"  id="newDataForm">
+  
 
-        <div class="date_container">
-            <ul>
-                <li>
-                    Date:  <div class="box" id="CurrentDateContainer">01-01-1999</div>
-                </li>
-                <li>
-                    Invoice Number: <div class="box" id="InvoiceNumberContainer">000222/02/24</div>
-                </li>
-                <li>Due Date: <div class="box" id="DueDateContainer">12-12-1999</div></li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Bill To  -->
-    <div class="bill_to">
-        <div class="bill_to_header">
-            Bill To
-        </div>
-        <div class="bill_to_body">
-            <ul id="bill_to_container">
-                
-            </ul>
-        </div>
-    </div>
-
-    <!-- ENd Bill To  -->
-<div class="addMore">
-    <button class="addItemButton" id="addRecipient">Recipient</button>
-    <button class="addItemButton" id="addNewItem">Add Item</button>
-    <button class="addItemButton" onclick="print()">Download</button>
-    <button class="addItemButton" id="ClearAllItemsButton">Clear All</button>
-    <button class="addItemButton" id="saveItemButton">Save Invoice</button>
-</div>
-
-
-    <div class="table">
-        <div class="thead">
-                <div class="th first_column">Description</div>
-                <div class="th second_column">QTY</div>
-                <div class="th third_column">Rate</div>
-                <div class="th fourth_column">Amount </div>
-                <div class="th fifth_column">.</div>
-            
-        </div>
-<!-- Table body Start  -->
-        <div class="tbody" id="tbody">
-
-           
-        </div>
-    </div>
-<!-- End Table body  -->
-
-
-    <div class="footer">
-        <div class="footer-left">
-            <div class="left-header">
-                <u>Payment Details</u>
-            </div>
-            <ul>
-                <li>Account No: <span id="bank_account_container">55</span></li>
-                <li>Account Name: <span id="bank_account_name_container"></span></li>
-                <li>Bank Name: <span id="bank_name_container"></span></li>
-
-            </ul>
-        </div>
-
-        <div class="footer-right">
-            <ul>
-                <li>Subtotal: <span id="subTotal">&#8358; </span></li>
-                <li>Discount: <span id="DiscountsContainer">&#8358; </span></li>
-                <li>Total: <span id="GrossTotalContainer">&#8358; </span></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="amount_in_words">
-        <div class="top">
-            <span class="amountWords">
-                Amount In Words:
-            </span>
-            <div class="line_container" id="amount_in_words_container"></div>
-        </div>
-        <div class="bottom">
-            <div class="line_container"></div>
-        </div>
-    </div>
-
-    <div class="signatory">
-        <div class="name_and_sign">
-            <div class="signature">
-                <img id="signee_signature_container" alt="signature">
-            </div>
-            <div id="signee_name_container" class="name_container"></div>
-        </div>
-        <div class="company_name_sign">
-            For <span id="company_name_container_sign"></span>
-        </div>
-    </div>
-
-
-    <br><br>
-<footer>
-    <center>   
-    <small>Powered by Weperch Technologies LLC</small>
-</center>
-</footer>
-    </main>
-
-
-
-</container>
-<div class="modal hide">
-    <div class="modal-body">
-        <div class="modal-header">
-            <div class="modal-title">
-                <b>Add New item</b>
-            </div>
-
-            <div class="close-button">
-                X
-            </div>
-        </div>
-
-        <form onsubmit="return false"  id="newDataForm">
-            <div class="form-control-container">
-                <label for="description"> Item Description</label>
-                <!-- <textarea class="form-control" id="description" cols="30" rows="10"></textarea> -->
-                <input type="text" class="form-control" id="description" >
-            </div>
-   
-            <div class="form-control-container">
-            <label for="quantity">Item quantity</label>
-            <input type="number" class="form-control" id="quantity" >
-            </div>
-
-            <div class="form-control-container">
-            <label for="rate">Rate of Item Sold</label>
-            <input type="number" class="form-control" id="rate" >
-            </div>
-
-            <div class="form-control-container">
-                <label for="rate">Amount</label>
-                <input type="number" class="form-control" id="amount" readonly value="0">
+              <div class="formControlContainer">
+                  <label for="description"> Item Description</label>
+                  <!-- <textarea class="formControl" id="description" cols="30" rows="10"></textarea> -->
+                  <input type="text" class="formControl" id="description" >
+              </div>
+     
+              <div class="formControlContainer">
+              <label for="quantity">Item quantity</label>
+              <input type="number" class="formControl" id="quantity" >
+              </div>
+  
+              <div class="formControlContainer">
+              <label for="rate">Rate of Item Sold</label>
+              <input type="number" class="formControl" id="rate" >
+              </div>
+  
+              <div class="formControlContainer">
+                  <label for="rate">Amount</label>
+                  <input type="number" class="formControl" id="amount" readonly value="0">
+                  </div>
+      
+  
+              <div class="formControlContainer">
+                  <label class="label">
+                      Discount?
+                  </label>
+                  <div>
+                  <span for="discount">Yes</span>
+                  <input type="radio" name="discount" id="discountYes">
+  
+                  <span for="discount">No</span>
+                  <input type="radio" name="discount" id="discountNo">
                 </div>
-    
+              </div>
+          
+              <div  class="formControlContainer" id="DiscountContainerBody">
+          
+              </div>
+             
+              
+          <div class="modal-footer">
+              <div class="buttons-container">
+                  <button class="addItemButton">Done</button>
+              </div>
+          </div>
+  
+      
+          </form>
+  
+      </div>
+  </div>
+  
 
-            <div class="form-control-container">
-                <label class="label">
-                    Discount?
-                </label>
-                <span for="discount">Yes</span>
-                <input type="radio" name="discount" id="discountYes">
-
-                <span for="discount">No</span>
-                <input type="radio" name="discount" id="discountNo">
-            </div>
-        
-            <div id="DiscountContainerBody">
-        
-            </div>
-           
-            
-        <div class="modal-footer">
-            <div class="buttons-container">
-                <button class="addItemButton">Done</button>
-            </div>
+                      </div>
         </div>
+      
+          
+         
+               
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="offcanvas offcanvas-start user-chat-box" tabindex="-1" id="chat-sidebar" aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+                    Invoice
+                  </h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="p-3 border-bottom">
+                  <!-- <form class="position-relative">
+                    <input type="search" class="formControl search-invoice ps-5" id="text-srh" placeholder="Search Invoice">
+                    <i class="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3"></i>
+                  </form> -->
+                </div>
+                <!-- <div class="app-invoice overflow-auto">
+                  <ul class="invoice-users" id="invoiceListMobile">
+            
 
-    
-        </form>
+                  </ul>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!----Footer--->
+        <!-- -------------------------------------------------------------- -->
+        <!-- footer -->
+        <!-- -------------------------------------------------------------- -->
+ <%- include("footer")  %>
+        <!-- -------------------------------------------------------------- -->
+        <!-- End footer -->
+        <!-- -------------------------------------------------------------- -->
+        <!----Footer End--->
+      </div>
+      <script>
+  function handleColorTheme(e) {
+    document.documentElement.setAttribute("data-color-theme", e);
+  }
+</script>
+
 
     </div>
-</div>
 
-<script src="/js/handlingNewData.js" type="module" crossorigin="anonymous"></script>
 
-<script src="/js/modalHanfler.js"></script>
+  </div>
+  <div class="dark-transparent sidebartoggler"></div>
+  <script src="https://bootstrapdemos.wrappixel.com/ample/dist/assets/js/vendor.min.js"></script>
 
-</body>
-</html>
+
+  <!-- end einvoiceList  -->
+  <!-- Import Js Files -->
+  <script src="https://bootstrapdemos.wrappixel.com/ample/dist/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/ample/dist/assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="/js/theme/app.init.js"></script>
+  <script src="/js/theme/theme.js"></script>
+  <script src="/js/theme/app.min.js"></script>
+  <script src="/js/theme/sidebarmenu.js"></script>
+  <script src="/js/theme/feather.min.js"></script>
+
+  <!-- solar icons -->
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/ample/dist/assets/libs/fullcalendar/index.global.min.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/ample/dist/assets/js/apps/invoice.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/ample/dist/assets/js/apps/jquery.PrintArea.js"></script>
+  <script src="/js/handlingNewData.js" type="module" crossorigin="anonymous"></script>
+  
+  <script src="/js/modalHanfler.js"></script>
+  
+  </body>
+  </html>

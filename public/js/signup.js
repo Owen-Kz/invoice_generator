@@ -1,6 +1,6 @@
 const signupFormMain = document.getElementById("signupFormMain")
 
-
+if(signupFormMain){
 signupFormMain.addEventListener("submit", function(e) {
     e.preventDefault();
     const formData = new FormData(signupFormMain)
@@ -19,3 +19,4 @@ signupFormMain.addEventListener("submit", function(e) {
         }
     })
 })
+}

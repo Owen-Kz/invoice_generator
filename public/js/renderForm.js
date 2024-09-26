@@ -46,6 +46,10 @@ const signupForm = `
         <h6 class="headingTextBottom">Add Your Company details to get started.</h6>
     </div>
     <form id="signupFormMain" enctype="multipart/form-data">
+        <div class="formControlContainer">
+            <label for="login">Already have an account? <span class="loginText">Login</span></label>
+        </div>
+        
     <h5>Company Details</h5>
         <div class="formControlContainer">
             <label for="Fullname">Company Name</label>
@@ -117,9 +121,7 @@ const signupForm = `
             </div>
         </div>
         
-        <div class="formControlContainer">
-            <label for="login">Already have an account? <span class="loginText">Login</span></label>
-        </div>
+    
     </form>
     <div class="formFooter">
         <a href="#">Create an account for your brand.</a>

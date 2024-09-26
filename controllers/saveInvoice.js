@@ -5,16 +5,16 @@ const saveInvoice = async (req,res) =>{
         
     if(req.user){
         const {receipientData, itemsList, InvoiceNumber, expiry_date} = req.body
-
-
-        if(receipientData && receipientData.length && receipientData.length > 0){
+     
+        const recipient = JSON.parse(receipientData)
+        
+        if(recipient.length > 0){
             const cookieOptions = {
                 expiresIn: new Date(Date.now() + process.env.COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
                 httpOnly: true
             }
-
             res.cookie("exit_inv", InvoiceNumber, cookieOptions)
-      const recipient = JSON.parse(receipientData)
+     
  
         
         // const items = JSON.parse(itemsList)

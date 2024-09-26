@@ -47,7 +47,8 @@ const login_user = async (req, res) => {
                 res.cookie("userRegistered", token, cookieOptions)
                 res.cookie("uid",result[0].id, cookieOptions)
                 // return res.json({ status: "success", success: "User Logged in", userToken: token, userId:result[0].id});
-                res.redirect("invoice")
+                res.redirect("dashboard")
+               
             // }else{
             //     return res.json({error:"Email Not Verified, Please verify you email to continue"})
             // }

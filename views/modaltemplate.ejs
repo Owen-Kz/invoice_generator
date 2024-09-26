@@ -1,0 +1,62 @@
+    <!--  Search Bar -->
+    <link rel="stylesheet" href="/css/shareModal.css">
+    
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content rounded-1">
+          <div class="modal-header border-bottom">
+           
+          </div>
+
+          <div class="modal-body message-body" data-simplebar="">
+            <div class="content">
+              <!-- <p>Share this link via</p> -->
+              <!-- <ul class="icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-telegram-plane"></i></a>
+              </ul> -->
+              <p>Copy link</p>
+              <div class="field">
+                <i class="url-icon uil uil-link"></i>
+                <input type="text" id="copyLinkContainer" readonly value="https://codepen.io/coding_dev_">
+                <button>Copy</button>
+              </div>
+              <br>
+              <p>Or Send Email Reminder to Recipient</p>
+              <button class="btn btn-primary disabled premium" disabled>
+                <i class="ti ti-crown"></i>
+                Send Email Remainder</button>
+                <small>Upgrade your plan to access this feature</small>
+            </div>
+    
+       
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+    const popup = document.querySelector(".modal-body"),
+    field = popup.querySelector(".field"),
+    input = field.querySelector("input"),
+    copy = field.querySelector("button");
+
+    
+
+    copy.onclick = ()=>{
+      input.select(); //select input value
+      if(document.execCommand("copy")){ //if the selected text is copied
+        field.classList.add("active");
+        copy.innerText = "Copied";
+        setTimeout(()=>{
+          window.getSelection().removeAllRanges(); //remove selection from page
+          field.classList.remove("active");
+          copy.innerText = "Copy";
+        }, 3000);
+      }
+    }
+    </script>

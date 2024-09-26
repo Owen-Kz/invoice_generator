@@ -9,9 +9,9 @@ const AddNewItemButton  = document.querySelector("#addNewItem")
 
 DiscountYes.addEventListener("change", function () {
 
-DiscountContainerBody.innerHTML = ` <div class="form-control-container">
+DiscountContainerBody.innerHTML = ` <div class="formControlContainer">
 <label for="discount">Enter Amount</label>
-<input type="number" class="form-control" id="discount">
+<input type="number" class="formControl" id="discount">
 </div>`
 
 })

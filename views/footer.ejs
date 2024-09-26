@@ -1,0 +1,19 @@
+<style>
+  .c-footer_inner{
+    display: flex;
+    text-align: center;
+    align-self: center;
+    margin: auto;
+  }
+</style>
+<footer class="footer py-3 bg-white border-top text-center">
+   <div class="c-footer_inner">
+    Weperch Technologies Limited (c) <span id="year"></span>
+    
+    </div>
+  </footer>
+
+  <script>
+    const year = document.getElementById("year")
+    year.innerText = new Date().getFullYear()
+  </script>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Red_Theme" data-layout="vertical">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicon icon-->
+  <link rel="shortcut icon" type="image/png" href="/assets/favicon.png" />
+
+  <!-- Core Css -->
+  <link rel="stylesheet" href="/css/css/styles.css" />
+  <title>Weperch Invoice Generator</title>
+  <!-- <link rel="stylesheet" href="/css/landing.css"> -->
+</head>
+<body class="link-sidebar">
+  <!-- Preloader -->
+  <div class="preloader">
+    <img src="/assets/favicon.png" alt="loader" class="lds-ripple img-fluid" />
+  </div>
+  <div id="main-wrapper">
+     <!-- Sidebar Start -->
+     <aside class="left-sidebar with-vertical">
+      <div><!-- ---------------------------------- -->
+        <!-- Start Vertical Layout Sidebar -->
+        <!-- ---------------------------------- -->
+        <!-- Sidebar scroll-->
+      <%- include("leftSideBar")  %>
+
+        <!-- End Sidebar scroll-->
+      </div>
+    </aside>
+    <!--  Sidebar End -->
+    <div class="page-wrapper">
+ <%- include("header") %>
+ <aside class="left-sidebar with-horizontal asideShadow">
+  
+ </aside>
+      <div class="body-wrapper">
+        <div class="container-fluid">
+          <div class="shadow-none position-relative overflow-hidden mb-4">
+            <div class="d-sm-flex d-block justify-content-between align-items-center">
+              <h5 class="mb-0 fw-semibold text-uppercase"> Pricing</h5>
+              <nav aria-label="breadcrumb" class="d-flex align-items-center">
+                <ol class="breadcrumb d-flex align-items-center">
+                  <li class="breadcrumb-item">
+                    <a class="text-decoration-none" href="/dashboard">Home
+                    </a>
+                  </li>
+                  <li class="breadcrumb-item text-primary" aria-current="page">
+                    Pricing
+                  </li>
+                </ol>
+
+              </nav>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+              <h2 class="fw-bolder mb-0 fs-8 lh-base">Flexible Plans Tailored to Fit Your Community's Unique Needs!</h2>
+            </div>
+          </div>
+          <div class="d-flex align-items-center justify-content-center my-7">
+            <span class="text-dark fw-bolder text-capitalize me-3">Monthly</span>
+            <div class="form-check form-switch mb-0">
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+            </div>
+            <span class="text-dark fw-bolder text-capitalize ms-2">Yearly</span>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 col-lg-4">
+              <div class="card">
+                <div class="card-body">
+                  <span class="fw-bolder text-uppercase fs-2 d-block mb-7">Silver</span>
+                  <div class="my-4">
+                    <img src="https://bootstrapdemos.wrappixel.com/ample/dist/assets/images/backgrounds/silver.png" alt="ample-img" class="img-fluid" width="80" height="80">
+                  </div>
+                  <h2 class="fw-bolder fs-12 mb-3">Free</h2>
+                  <ul class="list-unstyled mb-7">
+                    <li class="d-flex align-items-center gap-2 py-2">
+                      <i class="ti ti-check text-primary fs-4"></i>
+                      <span class="text-dark">3 Members</span>
+                    </li>
+                    <li class="d-flex align-items-center gap-2 py-2">
+                      <i class="ti ti-check text-primary fs-4"></i>
+                      <span class="text-dark">Single Devise</span>
+                    </li>
+                    <li class="d-flex align-items-center gap-2 py-2">
+                      <i class="ti ti-x text-muted fs-4"></i>
+                      <span class="text-muted">50GB Storage</span>
+                    </li>
+                    <li class="d-flex align-items-center gap-2 py-2">
+                      <i class="ti ti-x text-muted fs-4"></i>
+                      <span class="text-muted">Monthly Backups</span>
+                    </li>
+                    <li class="d-flex align-items-center gap-2 py-2">
+                      <i class="ti ti-x text-muted fs-4"></i>
+                      <span class="text-muted">Permissions & workflows</span>
+                    </li>
+                  </ul>
+                  <button class="btn btn-primary fw-bolder py-6 w-100 text-capitalize">Choose Silver</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+              <div class="card">
+                <div class="card-body pt-6">
+                  <div class="text-end">
+                    <span class="badge fw-bolder py-1 bg-warning-subtle text-warning text-uppercase fs-2 rounded-3">POPULAR</span>
+                  </div>
+                  <span class="fw-bolder text-uppercase fs-2 d-block mb-7">bronze</span>
+                  <div class="my-4">
+                    <img src="https://bootstrapdemos.wrappixel.com/ample/dist/assets/images/backgrounds/bronze.png" alt="ample-img" class="img-fluid" width="80" height="80">
+                  </div>
+                  <div class="d-flex mb-3">
+                    <h5 class="fw-bolder fs-6 mb-0">$</h5>
+                    <h2 class="fw-bolder fs-12 ms-2 mb-0">4.99</h2>
+                    <span class="ms-2 fs-4 d-flex align-items-center">/mo</span>
+                  </div>
+                  <ul class="list-unstyled mb-7">
+                    <li class="d-flex align-items-center gap-2 py-2">
+                      <i class="ti ti-check text-primary fs-4"></i>
+                      <span class="text-dark">5 Members</span>
+                    </li>
+                    <li class="d-flex align-items-center gap-2 py-2">
+                      <i class="ti ti-check text-primary fs-4"></i>
+                      <span class="text-dark">Single Devise</span>
+                    </li>
+                    <li class="d-flex align-items-center gap-2 py-2">
+                      <i class="ti ti-check text-primary fs-4"></i>
+                      <span class="text-dark">80GB Storage</span>
+                    </li>
+                    <li class="d-flex align-items-center gap-2 py-2">
+                      <i class="ti ti-x text-muted fs-4"></i>
+                      <span class="text-muted">Monthly Backups</span>
+                    </li>
+                    <li class="d-flex align-items-center gap-2 py-2">
+                      <i class="ti ti-x text-muted fs-4"></i>
+                      <span class="text-muted">Permissions & workflows</span>
+                    </li>
+                  </ul>
+                  <button class="btn btn-primary fw-bolder py-6 w-100 text-capitalize">choose bronze</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+              <div class="card">
+                <div class="card-body">
+                  <span class="fw-bolder text-uppercase fs-2 d-block mb-7">gold</span>
+                  <div class="my-4">
+                    <img src="https://bootstrapdemos.wrappixel.com/ample/dist/assets/images/backgrounds/gold.png" alt="ample-img" class="img-fluid" width="80" height="80">
+                  </div>
+                  <div class="d-flex mb-3">
+                    <h5 class="fw-bolder fs-6 mb-0">$</h5>
+                    <h2 class="fw-bolder fs-12 ms-2 mb-0">9.99</h2>
+                    <span class="ms-2 fs-4 d-flex align-items-center">/mo</span>
+                  </div>
+                  <ul class="list-unstyled mb-7">
+                    <li class="d-flex align-items-center gap-2 py-2">
+                      <i class="ti ti-check text-primary fs-4"></i>
+                      <span class="text-dark">5 Members</span>
+                    </li>
+                    <li class="d-flex align-items-center gap-2 py-2">
+                      <i class="ti ti-check text-primary fs-4"></i>
+                      <span class="text-dark">Single Devise</span>
+                    </li>
+                    <li class="d-flex align-items-center gap-2 py-2">
+                      <i class="ti ti-check text-primary fs-4"></i>
+                      <span class="text-dark">120GB Storage</span>
+                    </li>
+                    <li class="d-flex align-items-center gap-2 py-2">
+                      <i class="ti ti-check text-primary fs-4"></i>
+                      <span class="text-dark">Monthly Backups</span>
+                    </li>
+                    <li class="d-flex align-items-center gap-2 py-2">
+                      <i class="ti ti-check text-primary fs-4"></i>
+                      <span class="text-dark">Permissions & workflows</span>
+                    </li>
+                  </ul>
+                  <button class="btn btn-primary fw-bolder py-6 w-100 text-capitalize">choose gold</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!----Footer--->
+        <!-- -------------------------------------------------------------- -->
+        <!-- footer -->
+        <!-- -------------------------------------------------------------- -->
+        <%- include("footer")  %>
+        <!-- -------------------------------------------------------------- -->
+        <!-- End footer -->
+        <!-- -------------------------------------------------------------- -->
+        <!----Footer End--->
+      </div>
+      <script>
+  function handleColorTheme(e) {
+    document.documentElement.setAttribute("data-color-theme", e);
+  }
+</script>
+
+
+    <!--  Search Bar -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content rounded-1">
+          <div class="modal-header border-bottom">
+            <input type="search" class="form-control fs-3" placeholder="Search here" id="search" />
+            <a href="javascript:void(0)" data-bs-dismiss="modal" class="lh-1">
+              <i class="ti ti-x fs-5 ms-3"></i>
+            </a>
+          </div>
+          <!-- <div class="modal-body message-body" data-simplebar="">
+            <h5 class="mb-0 fs-5 p-1">Quick Page Links</h5>
+            <ul class="list mb-0 py-2">
+              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
+                <a href="javascript:void(0)">
+                  <span class="h6 mb-1">Modern</span>
+                  <span class="fs-3 text-muted d-block">/dashboards/dashboard1</span>
+                </a>
+              </li>
+              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
+                <a href="javascript:void(0)">
+                  <span class="h6 mb-1">Dashboard</span>
+                  <span class="fs-3 text-muted d-block">/dashboards/dashboard2</span>
+                </a>
+              </li>
+              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
+                <a href="javascript:void(0)">
+                  <span class="h6 mb-1">Contacts</span>
+                  <span class="fs-3 text-muted d-block">/apps/contacts</span>
+                </a>
+              </li>
+              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
+                <a href="javascript:void(0)">
+                  <span class="h6 mb-1">Posts</span>
+                  <span class="fs-3 text-muted d-block">/apps/blog/posts</span>
+                </a>
+              </li>
+              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
+                <a href="javascript:void(0)">
+                  <span class="h6 mb-1">Detail</span>
+                  <span class="fs-3 text-muted d-block">/apps/blog/detail/streaming-video-way-before-it-was-cool-go-dark-tomorrow</span>
+                </a>
+              </li>
+              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
+                <a href="javascript:void(0)">
+                  <span class="h6 mb-1">Shop</span>
+                  <span class="fs-3 text-muted d-block">/apps/ecommerce/shop</span>
+                </a>
+              </li>
+              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
+                <a href="javascript:void(0)">
+                  <span class="h6 mb-1">Modern</span>
+                  <span class="fs-3 text-muted d-block">/dashboards/dashboard1</span>
+                </a>
+              </li>
+              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
+                <a href="javascript:void(0)">
+                  <span class="h6 mb-1">Dashboard</span>
+                  <span class="fs-3 text-muted d-block">/dashboards/dashboard2</span>
+                </a>
+              </li>
+              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
+                <a href="javascript:void(0)">
+                  <span class="h6 mb-1">Contacts</span>
+                  <span class="fs-3 text-muted d-block">/apps/contacts</span>
+                </a>
+              </li>
+              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
+                <a href="javascript:void(0)">
+                  <span class="h6 mb-1">Posts</span>
+                  <span class="fs-3 text-muted d-block">/apps/blog/posts</span>
+                </a>
+              </li>
+              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
+                <a href="javascript:void(0)">
+                  <span class="h6 mb-1">Detail</span>
+                  <span class="fs-3 text-muted d-block">/apps/blog/detail/streaming-video-way-before-it-was-cool-go-dark-tomorrow</span>
+                </a>
+              </li>
+              <li class="p-1 mb-1 px-2 rounded bg-hover-light-black">
+                <a href="javascript:void(0)">
+                  <span class="h6 mb-1">Shop</span>
+                  <span class="fs-3 text-muted d-block">/apps/ecommerce/shop</span>
+                </a>
+              </li>
+            </ul>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dark-transparent sidebartoggler"></div>
+  <!-- Import Js Files -->
+  <script src="https://bootstrapdemos.wrappixel.com/ample/dist/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://bootstrapdemos.wrappixel.com/ample/dist/assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="/js/theme/app.init.js"></script>
+  <script src="/js/theme/theme.js"></script>
+  <script src="/js/theme/app.min.js"></script>
+  <script src="/js/theme/sidebarmenu.js"></script>
+  <script src="/js/theme/feather.min.js"></script>
+
+  <!-- solar icons -->
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
+
+</html>

@@ -1,18 +1,19 @@
 import { CAlculateDiscounts, CalculateGrossTotal, CallculateSubtotal } from "./calculateForTotal.js"
 import { CurrentDate, DueDate, InvoiceNumber } from "./currentDate.js"
+import { DeleteInvoiceItem } from "./DeleteItemFromInvoice.js"
 import { GetCompanyDetails } from "./getCompanyDetails.js"
 import { numberToWords } from "./numberToWords.js"
 import { DeleteCookie, GetCookie, SetCookies, daysToKeep } from "./setCookie.js"
 
 
 let Data
-
+DeleteCookie("itemsList")
+// DeleteCookie("recipient")
 async function fetchItems(){
     return fetch("/getsavedItems", {
         method:"POST"
     }).then(res =>res.json())
     .then(data=>{
-        console.log(data)
     if(data.success){
        return  data.recentItems
     }else{
@@ -43,7 +44,6 @@ function PopFromArray(description) {
     const SavedItemsArrayNew = SavedItemsArray.filter(function(item) {
         return item.description !== description;
     });
-    // console.log(SavedItemsArrayNew)
     // Save the updated array to cookies
     SetCookies("itemsList", JSON.stringify(SavedItemsArrayNew), daysToKeep);
 
@@ -117,9 +117,6 @@ Quantity.addEventListener("keyup", function(){
 })
 
 
-function NewDiscount(){
-    console.log('Discount')
-}
 
 
 const tbody = document.querySelector(".tbody")
@@ -139,14 +136,14 @@ for(let i=0; i<SavedItemsArray.length; i++){
     }
     const Amount = new Number(SavedItemsArray[i].amount).toLocaleString();
     const Discount = new Number(SavedItemsArray[i].discount).toLocaleString();
-
+    const ItemId = SavedItemsArray[i].id ? SavedItemsArray[i].id : null
     tbody.innerHTML += `  <!-- Table Row Start   -->
     <div class="tRow">
      <div class="td first_column">${Description}</div>
      <div class="td second_column">${QTTY}</div>
      <div class="td third_column">&#8358; ${Rate}</div>
      <div class="td fourth_column">&#8358; ${Amount}</div>
-     <div class="td fifth_column closeItem" id="${i}">x</div>
+     <div class="td fifth_column closeItem" id="${i}" dataId=${ItemId}>x</div>
  </div>
  <!-- End Table Row  -->`
 
@@ -155,13 +152,20 @@ for(let i=0; i<SavedItemsArray.length; i++){
 const closeItem = document.querySelectorAll(".closeItem")
 
 if(closeItem.length >0){
-// console.log(closeItem[])
 
     closeItem.forEach(element => {
         const ID = element.id
-      element.addEventListener("click", function(){
+        const dataId = element.getAttribute("dataId")
+      element.addEventListener("click", async function(){
         PopFromArray(SavedItemsArray[ID].item_description)
-        console.log(SavedItemsArray[ID].item_description)
+        
+        if(dataId !== null){
+          await  DeleteInvoiceItem(dataId)
+          console.log("Deleted from database")
+          window.location.reload()
+
+        }
+        // Saveinvoice()
       })
     });
 

@@ -1,0 +1,85 @@
+
+:root{
+    --box-shadow: 0px 10px 15px 4px rgba(0,0,0,0.1);
+    --primary-color: #0853ff;
+    --default-text-color:#333;
+  }
+
+.logoCont{
+    padding: 4px;
+    background-color: rgb(250, 250, 250);
+    border-radius: 50%;
+}
+
+.navbar{
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: var(--box-shadow);
+    width: 82%;
+    height: max-content;
+    padding: 10px 25px 10px 25px;
+    right: 20px !important;
+    align-self: center;
+    float: center !important;
+    position: fixed;
+    background-color: white;
+
+}
+
+aside:not(.asideShadow){
+    z-index: 22492094;
+
+    background-color: var(--primary-color) !important;
+    height: 100vh !important;
+    top:0px !important;
+    border-top-right-radius: 30px;
+    font-weight: bolder !important;
+    box-shadow: var(--box-shadow);
+    -webkit-box-shadow: var(--box-shadow);
+    -moz-box-shadow: var(--box-shadow);
+}
+
+.asideShadow{
+    display: flex;
+    background-color: white !important;
+   
+    border-top-right-radius: 30px;
+    font-weight: bolder;
+
+
+    /* left: 20px;
+    top:40px; */
+    /* z-index: ; */
+    box-shadow: 21px 28px 0px 0px rgba(255,255,255,1);
+    -webkit-box-shadow: 21px 28px 0px 0px rgba(255,255,255,1);
+    -moz-box-shadow: 21px 28px 0px 0px rgba(255,255,255,1);
+}
+
+.active:not(.card .active){
+    background-color: #020a1d !important;
+}
+
+.btn-primary{
+    background-color: var(--primary-color) !important;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+}
+
+.form-check-input:checked{
+    background-color: var(--primary-color);
+    border: var(--primary-color);
+}
+
+
+.breadcrumb-item{
+    color: var(--primary-color) !important; 
+}
+
+.ms-3:hover{
+    color: var(--primary-color) !important;
+}
+
+.rounded{
+    border-radius: 50% !important;
+}

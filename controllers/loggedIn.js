@@ -8,7 +8,8 @@ const LoggedIn = (req, res, next) => {
 
   if (!token) {
     // Redirect to home if user is not logged in
-    return res.json({error:"UserNotLoggedIn"})
+  return res.render("start")
+    // return res.json({error:"UserNotLoggedIn"})
   }
 
   try {
@@ -18,9 +19,10 @@ const LoggedIn = (req, res, next) => {
     db.query("SELECT * FROM user_accounts WHERE id = ? ", [decoded.id], (err, result) => {
       if (err) {
         console.log(err);
-        return res.json({error:"Could Not Get data"}) // Redirect to home on error
+        return res.render("error", {message:"Could Not Get Data"})
+        // return res.json({error:"Could Not Get data"}) // Redirect to home on error
       }
-      req.user = result[0]
+      req.user = result[0] 
 
     //   return res.json({success:"IsLoggedIn", user:result[0]});
       next();

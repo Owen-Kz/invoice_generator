@@ -1,20 +1,14 @@
-*{
+/* *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
+} */
 :root{
     /* ---primaryColor: rgb(15, 61, 130); */
-    --primaryColor: #0e5ea1;
+    --primaryColor: #0853ff;
 
 }
-body{
-    display: flex;
-    justify-content: center;
-    /* font-family: 'Gillroy'; */
-    font-family: gilroy;
-    /* src: url('./gilroy/Gilroy-Regular.ttf'); */
-}
+
 @font-face {
     font-family: gilroy;
     src: url('./gilroy/Gilroy-Medium.ttf');
@@ -24,11 +18,11 @@ body{
     display: flex;
     flex-direction: column;
     padding:15px;
-    width: 50%;
+    width: 100%;
     margin: auto;
-    box-shadow: -9px 13px 52px -23px rgba(0,0,0,0.70);
+    /* box-shadow: -9px 13px 52px -23px rgba(0,0,0,0.70);
 -webkit-box-shadow: -9px 13px 52px -23px rgba(0,0,0,0.70);
--moz-box-shadow: -9px 13px 52px -23px rgba(0,0,0,0.70);
+-moz-box-shadow: -9px 13px 52px -23px rgba(0,0,0,0.70); */
     /* align-items: center; */
 }
 header{
